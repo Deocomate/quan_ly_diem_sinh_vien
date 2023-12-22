@@ -11,10 +11,6 @@ package com.quan_ly_diem_sinh_vien;
 public class Quan_ly_diem_sinh_vien {
 
     public static void main(String[] args) {
-        System.out.println("Chao Long");
-        System.out.println("Chao Duy Dat");
-        System.out.println("Chao Long 2");
-        System.out.println("Chao Khoaa!!");
-        
+          System.out.println("Hello World How to Compare");
     }
 }
