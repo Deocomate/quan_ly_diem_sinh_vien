@@ -14,10 +14,14 @@ public class Quan_ly_diem_sinh_vien {
         System.out.println("Chao Long");
         System.out.println("Chao Duy Dat");
         
+<<<<<<< HEAD
         
         System.out.println("Chao Long 2");
         
         
+=======
+        System.out.println("Chao Khoaa!!");
+>>>>>>> main
         
     }
 }
