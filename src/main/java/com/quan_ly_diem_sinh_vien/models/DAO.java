@@ -9,5 +9,7 @@ package com.quan_ly_diem_sinh_vien.models;
  * @author Admin
  */
 public class DAO {
-    
+
+    public int connect;
+
 }
