@@ -14,5 +14,10 @@ public class Quan_ly_diem_sinh_vien {
         System.out.println("Chao Long");
         System.out.println("Chao Duy Dat");
         
+        
+        System.out.println("Chao Long 2");
+        
+        
+        
     }
 }
