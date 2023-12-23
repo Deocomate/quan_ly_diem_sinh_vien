@@ -8,7 +8,6 @@ package com.quan_ly_diem_sinh_vien.models;
  *
  * @author datdn
  */
-import static Model.DAO.connect;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
