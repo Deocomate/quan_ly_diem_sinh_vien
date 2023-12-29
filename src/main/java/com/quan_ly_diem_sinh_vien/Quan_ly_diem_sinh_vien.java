@@ -4,6 +4,8 @@
 
 package com.quan_ly_diem_sinh_vien;
 
+
+
 /**
  *
  * @author Admin
@@ -11,6 +13,6 @@ package com.quan_ly_diem_sinh_vien;
 public class Quan_ly_diem_sinh_vien {
 
     public static void main(String[] args) {
-          System.out.println("Hello in Long computer");
+        System.out.println("Duy Đạt đẹp zai vl");
     }
 }
