@@ -4,10 +4,121 @@
  */
 package com.quan_ly_diem_sinh_vien.models;
 
+import java.sql.Date;
+
 /**
  *
  * @author Admin
  */
 public class SinhVien {
-    
+
+    int Id;
+    String Name;
+    Date BirthOfDate;
+    String Sex;
+    String Phone;
+    String Address;
+    String Email;
+    float Gpa;
+    int LopbiencheId;
+    int NganhId;
+
+    public SinhVien() {
+
+    }
+
+    ;
+    public SinhVien(int Id, String Name, Date BirthOfDate, String Sex, String Phone, String Address, String Email, float Gpa, int LopbiencheId, int NganhId) {
+        this.Id = Id;
+        this.Name = Name;
+        this.BirthOfDate = BirthOfDate;
+        this.Sex = Sex;
+        this.Phone = Phone;
+        this.Address = Address;
+        this.Email = Email;
+        this.Gpa = Gpa;
+        this.LopbiencheId = LopbiencheId;
+        this.NganhId = NganhId;
+    }
+
+    public int getId() {
+        return Id;
+    }
+
+    public void setId(int Id) {
+        this.Id = Id;
+    }
+
+    public String getName() {
+        return Name;
+    }
+
+    public void setName(String Name) {
+        this.Name = Name;
+    }
+
+    public Date getBirthOfDate() {
+        return BirthOfDate;
+    }
+
+    public void setBirthOfDate(Date BirthOfDate) {
+        this.BirthOfDate = BirthOfDate;
+    }
+
+    public String getSex() {
+        return Sex;
+    }
+
+    public void setSex(String Sex) {
+        this.Sex = Sex;
+    }
+
+    public String getPhone() {
+        return Phone;
+    }
+
+    public void setPhone(String Phone) {
+        this.Phone = Phone;
+    }
+
+    public String getAddress() {
+        return Address;
+    }
+
+    public void setAddress(String Address) {
+        this.Address = Address;
+    }
+
+    public String getEmail() {
+        return Email;
+    }
+
+    public void setEmail(String Email) {
+        this.Email = Email;
+    }
+
+    public float getGpa() {
+        return Gpa;
+    }
+
+    public void setGpa(float Gpa) {
+        this.Gpa = Gpa;
+    }
+
+    public int getLopbiencheId() {
+        return LopbiencheId;
+    }
+
+    public void setLopbiencheId(int LopbiencheId) {
+        this.LopbiencheId = LopbiencheId;
+    }
+
+    public int getNganhId() {
+        return NganhId;
+    }
+
+    public void setNganhId(int NganhId) {
+        this.NganhId = NganhId;
+    }
+
 }
