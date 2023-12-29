@@ -16,7 +16,7 @@ public class DateHelp {
 
     public static Date convertDate(String dateString) {
         Date sqlDate = null;
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         java.util.Date utilDate;
         try {
             utilDate = dateFormat.parse(dateString);
