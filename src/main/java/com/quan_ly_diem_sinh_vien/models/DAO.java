@@ -15,7 +15,7 @@ import java.sql.SQLException;
 public class DAO {
 
     protected static String hostName = "localhost:3306";
-    protected static String dbName = "quan_ly_diem_sinh_vien_test";
+    protected static String dbName = "quan_ly_dien_sinh_vien_test";
     protected static String username = "root";
     protected static String password = "";
     protected static String connectionURL = "jdbc:mysql://" + hostName + "/" + dbName;
