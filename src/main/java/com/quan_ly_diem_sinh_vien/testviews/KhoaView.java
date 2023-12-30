@@ -95,6 +95,17 @@ public class KhoaView extends javax.swing.JFrame {
         jLabel3.setText("Ngày thành lập khoa");
 
         idInput.setEditable(false);
+        idInput.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                idInputActionPerformed(evt);
+            }
+        });
+
+        nameInput.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nameInputActionPerformed(evt);
+            }
+        });
 
         dateInput.setText("yyyy-mm-dd");
 
@@ -115,7 +126,15 @@ public class KhoaView extends javax.swing.JFrame {
             new String [] {
                 "Mã khoa", "Tên khoa", "Ngày thành lập"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tableKhoa);
 
         editButton.setText("Sửa thông tin");
@@ -261,6 +280,14 @@ public class KhoaView extends javax.swing.JFrame {
         }
         refreshTable();
     }//GEN-LAST:event_deleteButtonActionPerformed
+
+    private void idInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idInputActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_idInputActionPerformed
+
+    private void nameInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameInputActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nameInputActionPerformed
 
     /**
      * @param args the command line arguments
