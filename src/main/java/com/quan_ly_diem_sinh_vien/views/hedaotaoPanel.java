@@ -19,13 +19,13 @@ import javax.swing.table.DefaultTableModel;
  * @author Admin
  */
 public class hedaotaoPanel extends javax.swing.JPanel {
-
+    
     DefaultTableModel tableModel;
-
+    
     public void showMessage(String mess) {
         JOptionPane.showMessageDialog(null, mess);
     }
-
+    
     public static int showMessageConfirm(String message) {
         // Sử dụng JOptionPane để hiển thị hộp thoại xác nhận với lựa chọn là Yes hoặc No
         int result = JOptionPane.showConfirmDialog(null, message, "Confirmation", JOptionPane.YES_NO_OPTION);
@@ -37,7 +37,7 @@ public class hedaotaoPanel extends javax.swing.JPanel {
             return 0;
         }
     }
-
+    
     public void refreshTable() {
         tableModel = (DefaultTableModel) table.getModel();
         List<HeDaoTao> list = HeDaoTaoDAO.list();
@@ -231,28 +231,35 @@ public class hedaotaoPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
-        HeDaoTao item = new HeDaoTao();
-        item.setTenHeDaoTao(ten_he_dao_tao_input.getText());
-        item.setThoiHanDaoTao(Float.parseFloat(thoi_han_dao_tao_input.getText()));
+        try {
+            HeDaoTao item = new HeDaoTao();
+            item.setTenHeDaoTao(ten_he_dao_tao_input.getText());
+            item.setThoiHanDaoTao(Float.parseFloat(thoi_han_dao_tao_input.getText()));
 
-        //Add
-        int check = HeDaoTaoDAO.create(item);
-        if (check <= 0) {
-            showMessage("Thêm dữ liệu không thành công");
-        } else {
-            showMessage("Thêm dữ liệu thành công");
+            //Add
+            int check = HeDaoTaoDAO.create(item);
+            if (check <= 0) {
+                showMessage("Thêm dữ liệu không thành công");
+            } else {
+                showMessage("Thêm dữ liệu thành công");
+            }
+        } catch (Exception e) {
+            showMessage("Thêm dữ liệu không thành công!, vui lòng kiểm tra lại các trường thông tin của bạn");
         }
-
         //List lại table
         refreshTable();
     }//GEN-LAST:event_addButtonActionPerformed
 
     private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
-        int id = Integer.parseInt(ma_he_dao_tao_input.getText());
-        HeDaoTao item = HeDaoTaoDAO.find(id);
-        item.setTenHeDaoTao(ten_he_dao_tao_input.getText());
-        item.setThoiHanDaoTao(Float.parseFloat(thoi_han_dao_tao_input.getText()));
-        HeDaoTaoDAO.update(item);
+        try {
+            int id = Integer.parseInt(ma_he_dao_tao_input.getText());
+            HeDaoTao item = HeDaoTaoDAO.find(id);
+            item.setTenHeDaoTao(ten_he_dao_tao_input.getText());
+            item.setThoiHanDaoTao(Float.parseFloat(thoi_han_dao_tao_input.getText()));
+            HeDaoTaoDAO.update(item);
+        } catch (Exception e) {
+            showMessage("Cập nhật dữ liệu không thành công!\nVui lòng kiểm lại thông tin bạn nhập và chọn");
+        }
         refreshTable();
     }//GEN-LAST:event_updateButtonActionPerformed
 
@@ -260,7 +267,10 @@ public class hedaotaoPanel extends javax.swing.JPanel {
         int row = table.getSelectedRow();
         int id = Integer.parseInt(tableModel.getValueAt(row, 0).toString());
         if (showMessageConfirm("Bạn có chắc chắn muốn xóa không") == 1) {
-            HeDaoTaoDAO.delete(id);
+            int rs = HeDaoTaoDAO.delete(id);
+            if (rs == 0) {
+                showMessage("Xóa không thành công! Vui lòng kiểm tra lại.");
+            }
         }
         refreshTable();
     }//GEN-LAST:event_deleteButtonActionPerformed
@@ -268,7 +278,7 @@ public class hedaotaoPanel extends javax.swing.JPanel {
     private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
         int index = table.getSelectedRow();
         Integer id = Integer.parseInt(tableModel.getValueAt(index, 0).toString());
-
+        
         HeDaoTao item = HeDaoTaoDAO.find(id);
         ma_he_dao_tao_input.setText(item.getId() + "");
         ten_he_dao_tao_input.setText(item.getTenHeDaoTao());
