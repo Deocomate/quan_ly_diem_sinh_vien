@@ -9,17 +9,18 @@ package com.quan_ly_diem_sinh_vien.models;
  * @author datdn
  */
 public class HeDaoTao {
+
     private int Id;
-    private String HeDaoTao;
+    private String TenHeDaoTao;
     private double ThoiHanDaoTao;
 
-    public HeDaoTao() {
+    public HeDaoTao(int Id, String TenHeDaoTao, double ThoiHanDaoTao) {
+        this.Id = Id;
+        this.TenHeDaoTao = TenHeDaoTao;
+        this.ThoiHanDaoTao = ThoiHanDaoTao;
     }
 
-    public HeDaoTao(int Id, String HeDaoTao, double ThoiHanDaoTao) {
-        this.Id = Id;
-        this.HeDaoTao = HeDaoTao;
-        this.ThoiHanDaoTao = ThoiHanDaoTao;
+    public HeDaoTao() {
     }
 
     public int getId() {
@@ -30,12 +31,12 @@ public class HeDaoTao {
         this.Id = Id;
     }
 
-    public String getHeDaoTao() {
-        return HeDaoTao;
+    public String getTenHeDaoTao() {
+        return TenHeDaoTao;
     }
 
-    public void setHeDaoTao(String HeDaoTao) {
-        this.HeDaoTao = HeDaoTao;
+    public void setTenHeDaoTao(String TenHeDaoTao) {
+        this.TenHeDaoTao = TenHeDaoTao;
     }
 
     public double getThoiHanDaoTao() {
@@ -47,4 +48,5 @@ public class HeDaoTao {
     }
     
     
+
 }

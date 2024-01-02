@@ -32,7 +32,7 @@ public class HeDaoTaoDAO extends DAO {
             while (rs.next()) {
                 // Lấy dữ liệu về
                 int id = rs.getInt("id");
-                String he_dao_tao = rs.getString("he_dao_tao");
+                String he_dao_tao = rs.getString("ten_hedaotao");
                 double thoi_han_dao_tao = rs.getDouble("thoi_han_dao_tao");
                 // Khởi tạo đối tượng, thêm vào list
                 HeDaoTao item = new HeDaoTao(id, he_dao_tao, thoi_han_dao_tao);
@@ -58,11 +58,11 @@ public class HeDaoTaoDAO extends DAO {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 int id = rs.getInt("id");
-                String he_dao_tao = rs.getString("he_dao_tao");
+                String he_dao_tao = rs.getString("ten_hedaotao");
                 double thoi_han_dao_tao = rs.getDouble("thoi_han_dao_tao");
 
                 item.setId(id);
-                item.setHeDaoTao(he_dao_tao);
+                item.setTenHeDaoTao(he_dao_tao);
                 item.setThoiHanDaoTao(thoi_han_dao_tao);
             }
             // Hủy kết nốt đến database để đỡ tốn tài nguyên
@@ -80,7 +80,7 @@ public class HeDaoTaoDAO extends DAO {
             String sql = "INSERT INTO `tbl_hedaotao`(`ten_hedaotao`, `thoi_han_dao_tao`) values(?, ?)";
             // Prepare: chuẩn bị 1 câu lệnh
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, item.getHeDaoTao());
+            ps.setString(1, item.getTenHeDaoTao());
             ps.setDouble(2, item.getThoiHanDaoTao());
             // Execute: thực thi câu lệnh vừa xong
             rows = ps.executeUpdate();
@@ -99,7 +99,7 @@ public class HeDaoTaoDAO extends DAO {
             String sql = "UPDATE `tbl_hedaotao` SET `ten_hedaotao`= ? ,`thoi_han_dao_tao`= ? WHERE `id` = ?";
             // Prepare: chuẩn bị 1 câu lệnh
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, item.getHeDaoTao());
+            ps.setString(1, item.getTenHeDaoTao());
             ps.setDouble(2, item.getThoiHanDaoTao());
             ps.setInt(3, item.getId());
             // Execute: thực thi câu lệnh vừa xong
@@ -130,4 +130,3 @@ public class HeDaoTaoDAO extends DAO {
         return rows;
     }
 }
-

@@ -35,16 +35,16 @@ public class khoaPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(167, 167, 167)
+                .addGap(181, 181, 181)
                 .addComponent(jLabel1)
-                .addContainerGap(207, Short.MAX_VALUE))
+                .addContainerGap(193, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(110, 110, 110)
+                .addGap(140, 140, 140)
                 .addComponent(jLabel1)
-                .addContainerGap(174, Short.MAX_VALUE))
+                .addContainerGap(144, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
