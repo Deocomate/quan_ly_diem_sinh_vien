@@ -4,8 +4,8 @@
  */
 package com.quan_ly_diem_sinh_vien.views;
 
-import com.quan_ly_diem_sinh_vien.models.HeDaoTao;
-import com.quan_ly_diem_sinh_vien.models.HeDaoTaoDAO;
+import com.quan_ly_diem_sinh_vien.models.HocPhan;
+import com.quan_ly_diem_sinh_vien.models.HocPhanDAO;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -36,13 +36,13 @@ public class hocphanPanel extends javax.swing.JPanel {
 
     public void refreshTable() {
         tableModel = (DefaultTableModel) table.getModel();
-        List<HeDaoTao> list = HeDaoTaoDAO.list();
+        List<HocPhan> list = HocPhanDAO.list();
         tableModel.setNumRows(0);
-        for (HeDaoTao item : list) {
+        for (HocPhan item : list) {
             tableModel.addRow(new Object[]{
                 item.getId(),
-                item.getTenHeDaoTao(),
-                item.getThoiHanDaoTao()
+                item.getTenHocPhan(),
+                item.getSoTinChi()
             });
         }
         table.setRowSelectionInterval(0, 0);
@@ -50,6 +50,7 @@ public class hocphanPanel extends javax.swing.JPanel {
 
     public hocphanPanel() {
         initComponents();
+        refreshTable();
     }
 
     /**
@@ -84,6 +85,8 @@ public class hocphanPanel extends javax.swing.JPanel {
 
         jLabel3.setText("Số tín chỉ");
 
+        maText.setEditable(false);
+
         tenText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tenTextActionPerformed(evt);
@@ -100,8 +103,18 @@ public class hocphanPanel extends javax.swing.JPanel {
         });
 
         updateButton.setText("Cập nhật học phần");
+        updateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateButtonActionPerformed(evt);
+            }
+        });
 
         deleteButton.setText("Xóa học phần");
+        deleteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -128,6 +141,11 @@ public class hocphanPanel extends javax.swing.JPanel {
         );
 
         editButton.setText("Chọn");
+        editButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editButtonActionPerformed(evt);
+            }
+        });
 
         table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -225,8 +243,59 @@ public class hocphanPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_tenTextActionPerformed
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
+        try {
+            HocPhan item = new HocPhan();
+            item.setTenHocPhan(tenText.getText());
+            item.setSoTinChi(Integer.parseInt(tinText.getText()));
 
+            //Add
+            int check = HocPhanDAO.create(item);
+            if (check <= 0) {
+                showMessage("Thêm dữ liệu không thành công");
+            } else {
+                showMessage("Thêm dữ liệu thành công");
+            }
+        } catch (Exception e) {
+            showMessage("Thêm dữ liệu không thành công!, vui lòng kiểm tra lại các trường thông tin của bạn");
+        }
+        //List lại table
+        refreshTable();
     }//GEN-LAST:event_addButtonActionPerformed
+
+    private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
+        try {
+            int id = Integer.parseInt(maText.getText());
+            HocPhan item = HocPhanDAO.find(id);
+            item.setTenHocPhan(tenText.getText());
+            item.setSoTinChi(Integer.parseInt(tinText.getText()));
+            HocPhanDAO.update(item);
+        } catch (Exception e) {
+            showMessage("Cập nhật dữ liệu không thành công!\nVui lòng kiểm lại thông tin bạn nhập và chọn");
+        }
+        refreshTable();
+    }//GEN-LAST:event_updateButtonActionPerformed
+
+    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
+        int row = table.getSelectedRow();
+        int id = Integer.parseInt(tableModel.getValueAt(row, 0).toString());
+        if (showMessageConfirm("Bạn có chắc chắn muốn xóa không") == 1) {
+            int rs = HocPhanDAO.delete(id);
+            if (rs == 0) {
+                showMessage("Xóa không thành công! Vui lòng kiểm tra lại.");
+            }
+        }
+        refreshTable();
+    }//GEN-LAST:event_deleteButtonActionPerformed
+
+    private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
+        int index = table.getSelectedRow();
+        Integer id = Integer.parseInt(tableModel.getValueAt(index, 0).toString());
+
+        HocPhan item = HocPhanDAO.find(id);
+        maText.setText(item.getId() + "");
+        tenText.setText(item.getTenHocPhan());
+        tinText.setText(item.getSoTinChi()+ "");
+    }//GEN-LAST:event_editButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
