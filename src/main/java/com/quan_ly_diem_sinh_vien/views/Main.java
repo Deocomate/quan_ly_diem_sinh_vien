@@ -1,16 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package com.quan_ly_diem_sinh_vien.views;
 
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
 
-/**
- *
- * @author Admin
- */
+
 public class Main extends javax.swing.JFrame {
 
     /**
