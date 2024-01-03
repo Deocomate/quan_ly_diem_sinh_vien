@@ -14,8 +14,13 @@ import java.sql.Date;
  *
  * @author PC
  */
-public class Khoa{
-    
+public class Khoa {
+
+    @Override
+    public String toString() {
+        return getTenKhoa(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+    }
+
     private int Id;
     private String TenKhoa;
     private Date NgayThanhLap;
@@ -52,7 +57,5 @@ public class Khoa{
     public void setNgayThanhLap(Date NgayThanhLap) {
         this.NgayThanhLap = NgayThanhLap;
     }
-    
-    
-    
+
 }

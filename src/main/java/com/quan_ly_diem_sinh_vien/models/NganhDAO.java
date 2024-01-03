@@ -33,7 +33,7 @@ public class NganhDAO extends DAO {
                 // Lấy dữ liệu về
                 int id = rs.getInt("id");
                 String ten_nganh = rs.getString("ten_nganh");
-                int he_dao_tao_id = rs.getInt("he_dao_tao_id");
+                int he_dao_tao_id = rs.getInt("hedaotao_id");
                 int khoa_id = rs.getInt("khoa_id");
                 // Khởi tạo đối tượng, thêm vào list
                 Nganh item = new Nganh(id, ten_nganh, he_dao_tao_id, khoa_id);
@@ -60,7 +60,7 @@ public class NganhDAO extends DAO {
             while (rs.next()) {
                 int id = rs.getInt("id");
                 String ten_nganh = rs.getString("ten_nganh");
-                int he_dao_tao_id = rs.getInt("he_dao_tao_id");
+                int he_dao_tao_id = rs.getInt("hedaotao_id");
                 int khoa_id = rs.getInt("khoa_id");
 
                 item.setId(id);

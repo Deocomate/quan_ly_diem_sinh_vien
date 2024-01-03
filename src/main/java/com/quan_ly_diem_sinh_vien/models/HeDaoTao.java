@@ -10,6 +10,11 @@ package com.quan_ly_diem_sinh_vien.models;
  */
 public class HeDaoTao {
 
+    @Override
+    public String toString() {
+        return getTenHeDaoTao(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+    }
+
     private int Id;
     private String TenHeDaoTao;
     private double ThoiHanDaoTao;
@@ -46,7 +51,5 @@ public class HeDaoTao {
     public void setThoiHanDaoTao(double ThoiHanDaoTao) {
         this.ThoiHanDaoTao = ThoiHanDaoTao;
     }
-    
-    
 
 }

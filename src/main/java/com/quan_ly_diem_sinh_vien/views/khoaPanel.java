@@ -247,7 +247,6 @@ public class khoaPanel extends javax.swing.JPanel {
         }
         //List lại table
         refreshTable();
-    
     }//GEN-LAST:event_addButtonActionPerformed
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
@@ -263,7 +262,7 @@ public class khoaPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_deleteButtonActionPerformed
 
     private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
-       try {
+        try {
             int id = Integer.parseInt(ma_khoa_input.getText());
             Khoa item = KhoaDAO.find(id);
             item.setTenKhoa(ten_khoa_input.getText());
@@ -276,7 +275,7 @@ public class khoaPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_updateButtonActionPerformed
 
     private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
-                int index = table.getSelectedRow();
+        int index = table.getSelectedRow();
         Integer id = Integer.parseInt(tableModel.getValueAt(index, 0).toString());
 
         Khoa item = KhoaDAO.find(id);
