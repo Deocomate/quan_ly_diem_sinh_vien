@@ -1,4 +1,3 @@
-
 package com.quan_ly_diem_sinh_vien.models;
 
 import java.sql.Connection;
@@ -7,7 +6,8 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 public class HocPhanDAO extends DAO {
-	public static ArrayList<HocPhan> list() {
+
+    public static ArrayList<HocPhan> list() {
         ArrayList<HocPhan> list = new ArrayList<>();
         Connection con = connect();
         try {
@@ -32,8 +32,8 @@ public class HocPhanDAO extends DAO {
         }
         return list;
     }
-	
-	public static HocPhan find(int _id) {
+
+    public static HocPhan find(int _id) {
         HocPhan item = new HocPhan();
         Connection con = connect();
         try {
@@ -50,7 +50,7 @@ public class HocPhanDAO extends DAO {
 
                 item.setId(id);
                 item.setTenHocPhan(tenHocPhan);
-                item.setId(soTinChi);
+                item.setSoTinChi(soTinChi);
             }
             // Hủy kết nốt đến database để đỡ tốn tài nguyên
             con.close();
@@ -59,7 +59,7 @@ public class HocPhanDAO extends DAO {
         }
         return item;
     }
-	
+
     public static int create(HocPhan item) {
         int rows = 0;
         Connection con = connect();
@@ -67,8 +67,8 @@ public class HocPhanDAO extends DAO {
             String sql = "INSERT INTO `tbl_hocphan`(`ten_hocphan`, `so_tin_chi`) values(?, ?)";
             // Prepare: chuẩn bị 1 câu lệnh
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1 , item.getTenHocPhan());
-            ps.setInt(2 , item.getSoTinChi());
+            ps.setString(1, item.getTenHocPhan());
+            ps.setInt(2, item.getSoTinChi());
             // Execute: thực thi câu lệnh vừa xong
             rows = ps.executeUpdate();
             // Hủy kết nốt đến database để đỡ tốn tài nguyên
@@ -78,7 +78,7 @@ public class HocPhanDAO extends DAO {
         }
         return rows;
     }
-    
+
     public static int update(HocPhan item) {
         int rows = 0;
         Connection con = connect();
@@ -98,7 +98,7 @@ public class HocPhanDAO extends DAO {
         }
         return rows;
     }
-    
+
     public static int delete(int id) {
         int rows = 0;
         Connection con = connect();
