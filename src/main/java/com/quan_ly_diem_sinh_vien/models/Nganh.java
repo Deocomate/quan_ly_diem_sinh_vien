@@ -57,9 +57,4 @@ public class Nganh {
         this.KhoaId = KhoaId;
     }
     
-    @Override
-    public String toString() {
-        return TenNganh;
-    }
-    
 }
