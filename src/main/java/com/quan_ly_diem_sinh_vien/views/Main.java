@@ -129,7 +129,7 @@ public class Main extends javax.swing.JFrame {
         });
         jMenu3.add(lopbiencheMenu);
 
-        lophocphanMenu.setText("Quản lý lớp học phần sinh viên");
+        lophocphanMenu.setText("Quản lý lớp học phần");
         lophocphanMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 lophocphanMenuActionPerformed(evt);
