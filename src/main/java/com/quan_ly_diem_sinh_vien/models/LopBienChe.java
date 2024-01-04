@@ -59,4 +59,8 @@ public class LopBienChe {
         this.GiangvienId = GiangvienId;
     }
 
+    @Override
+        public String toString() {
+            return TenLop;
+        }
 }

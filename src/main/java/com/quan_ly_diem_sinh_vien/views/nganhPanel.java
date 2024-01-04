@@ -340,6 +340,7 @@ public class nganhPanel extends javax.swing.JPanel {
             item.setKhoaId(khoa_id);
 
             NganhDAO.update(item);
+            
         } catch (Exception e) {
             showMessage("Cập nhật dữ liệu không thành công!\nVui lòng kiểm lại thông tin bạn nhập và chọn");
         }

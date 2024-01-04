@@ -56,5 +56,10 @@ public class Nganh {
     public void setKhoaId(int KhoaId) {
         this.KhoaId = KhoaId;
     }
-
+    
+    @Override
+    public String toString() {
+        return TenNganh;
+    }
+    
 }

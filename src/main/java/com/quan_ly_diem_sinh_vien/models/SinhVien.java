@@ -120,5 +120,6 @@ public class SinhVien {
     public void setNganhId(int NganhId) {
         this.NganhId = NganhId;
     }
+    
 
 }
