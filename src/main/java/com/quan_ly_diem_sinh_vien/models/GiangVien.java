@@ -15,6 +15,11 @@ import java.sql.Date;
  */
 public class GiangVien {
 
+    @Override
+    public String toString() {
+        return getName(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+    }
+    
     int Id;
     String Name;
     Date BirthOfDate;

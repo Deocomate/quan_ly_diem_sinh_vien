@@ -10,6 +10,11 @@ package com.quan_ly_diem_sinh_vien.models;
  */
 public class Nganh {
 
+    @Override
+    public String toString() {
+        return getTenNganh(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+    }
+    
     private int Id;
     private String TenNganh;
     private int HeDaoTaoId;
