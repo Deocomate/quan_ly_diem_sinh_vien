@@ -86,7 +86,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="lophocphanMenu">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Qu&#x1ea3;n l&#xfd; l&#x1edb;p h&#x1ecd;c ph&#x1ea7;n sinh vi&#xea;n"/>
+                <Property name="text" type="java.lang.String" value="Qu&#x1ea3;n l&#xfd; l&#x1edb;p h&#x1ecd;c ph&#x1ea7;n"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="lophocphanMenuActionPerformed"/>
