@@ -6,8 +6,9 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.sql.Date;
 
-public class LopHocPhanDAO extends DAO{
-	public static ArrayList<LopHocPhan> list() {
+public class LopHocPhanDAO extends DAO {
+
+    public static ArrayList<LopHocPhan> list() {
         ArrayList<LopHocPhan> list = new ArrayList<>();
         Connection con = connect();
         try {
@@ -36,8 +37,8 @@ public class LopHocPhanDAO extends DAO{
         }
         return list;
     }
-	
-	public static LopHocPhan find(int _id) {
+
+    public static LopHocPhan find(int _id) {
         LopHocPhan item = new LopHocPhan();
         Connection con = connect();
         try {
@@ -48,7 +49,7 @@ public class LopHocPhanDAO extends DAO{
             // Execute: thực thi câu lệnh vừa xong
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-            	int id = rs.getInt("id");
+                int id = rs.getInt("id");
                 String tenHocPhan = rs.getString("ten_lophocphan");
                 int nganhHocPhanId = rs.getInt("nganh_hocphan_id");
                 int giangVienId = rs.getInt("giangvien_id");
@@ -71,8 +72,8 @@ public class LopHocPhanDAO extends DAO{
         }
         return item;
     }
-	
-	public static int create(LopHocPhan item) {
+
+    public static int create(LopHocPhan item) {
         int rows = 0;
         Connection con = connect();
         try {
@@ -94,13 +95,13 @@ public class LopHocPhanDAO extends DAO{
         }
         return rows;
     }
-	
-	public static int update(LopHocPhan item) {
+
+    public static int update(LopHocPhan item) {
         int rows = 0;
         Connection con = connect();
         try {
             String sql = "UPDATE `tbl_lophocphan` SET `ten_lophocphan` = ?, `nganh_hocphan_id` = ?,"
-            		+ " `giangvien_id` = ?, `ngay_bat_dau` = ?, `ngay_ket_thuc` = ?, `ngay_thi` = ? WHERE `id` = ?";
+                    + " `giangvien_id` = ?, `ngay_bat_dau` = ?, `ngay_ket_thuc` = ?, `ngay_thi` = ? WHERE `id` = ?";
             // Prepare: chuẩn bị 1 câu lệnh
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, item.getTenHocPhan());
@@ -119,8 +120,8 @@ public class LopHocPhanDAO extends DAO{
         }
         return rows;
     }
-	
-	public static int delete(int id) {
+
+    public static int delete(int id) {
         int rows = 0;
         Connection con = connect();
         try {
@@ -137,6 +138,5 @@ public class LopHocPhanDAO extends DAO{
         }
         return rows;
     }
-	
-	
+
 }

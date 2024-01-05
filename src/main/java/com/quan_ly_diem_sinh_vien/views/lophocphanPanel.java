@@ -51,12 +51,15 @@ public class lophocphanPanel extends javax.swing.JPanel {
                 item.getId(),
                 item.getTenHocPhan(),
                 NganhDAO.find(item.getNganhHocPhanId()).getTenNganh(),
-                GiangVienDAO.find(item.getGiangVien_id()).getName()
+                GiangVienDAO.find(item.getGiangVien_id()).getName(),
+                item.getNgayBatDau(),
+                item.getNgayKetThuc(),
+                item.getNgayThi()
             });
         }
         table.setRowSelectionInterval(0, 0);
 
-        // Set cho combobox hiển thị tên của hệ đào tạo
+        // Set cho combobox hiển thị tên 
         DefaultComboBoxModel nganhCbbModel = (DefaultComboBoxModel) nganhCombobox.getModel();
         nganhCbbModel.removeAllElements();
         List<Nganh> listNganh = NganhDAO.list();
@@ -66,7 +69,7 @@ public class lophocphanPanel extends javax.swing.JPanel {
         nganhCombobox.setModel(nganhCbbModel);
         // End
 
-        // Set cho combobox hiển thị tên của khoa
+        // Set cho combobox hiển thị tên 
         DefaultComboBoxModel giangvienCbbModel = (DefaultComboBoxModel) giangvienCombobox.getModel();
         giangvienCbbModel.removeAllElements();
         List<GiangVien> listGiangVien = GiangVienDAO.list();
@@ -74,6 +77,7 @@ public class lophocphanPanel extends javax.swing.JPanel {
             giangvienCbbModel.addElement(k);
         }
         giangvienCombobox.setModel(giangvienCbbModel);
+        
         // End
     }
 
@@ -187,17 +191,17 @@ public class lophocphanPanel extends javax.swing.JPanel {
 
         table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Mã lớp học phần", "Tên lớp học phần", "Ngành", "Giảng Viên"
+                "Mã lớp học phần", "Tên lớp học phần", "Ngành", "Giảng Viên", "Ngày bắt đầu", "Ngày kết thúc", "Ngày thi"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, true
+                false, false, false, false, false, true, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
