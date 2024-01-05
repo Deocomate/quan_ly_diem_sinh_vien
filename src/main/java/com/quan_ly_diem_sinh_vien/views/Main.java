@@ -48,6 +48,7 @@ public class Main extends javax.swing.JFrame {
         bangdiemMenu = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Quản ký điểm sinh viên");
 
         mainPanel.setPreferredSize(new java.awt.Dimension(661, 644));
 
