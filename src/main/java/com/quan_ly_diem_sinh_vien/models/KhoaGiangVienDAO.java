@@ -8,6 +8,7 @@ package com.quan_ly_diem_sinh_vien.models;
  *
  * @author datdn
  */
+import static com.quan_ly_diem_sinh_vien.models.NganhHocPhanDAO.list;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,7 +19,8 @@ import java.util.ArrayList;
  *
  * @author PC
  */
-public class KhoaGiangVienDAO extends DAO{
+public class KhoaGiangVienDAO extends DAO {
+
     public static ArrayList<KhoaGiangVien> list() {
         ArrayList<KhoaGiangVien> list = new ArrayList<>();
         Connection con = connect();
@@ -133,4 +135,14 @@ public class KhoaGiangVienDAO extends DAO{
         return rows;
     }
 
+    public static ArrayList<Khoa> findListKhoaThuocGiangVien(int GiangVienId) {
+        ArrayList<Khoa> returnList = new ArrayList<>();
+        ArrayList<KhoaGiangVien> mainList = list();
+        for (KhoaGiangVien i : mainList) {
+            if (i.getGiangvienId() == GiangVienId) {
+                returnList.add(KhoaDAO.find(i.getKhoaId()));
+            }
+        }
+        return returnList;
+    }
 }

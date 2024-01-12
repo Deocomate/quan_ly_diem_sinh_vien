@@ -21,7 +21,7 @@ import javax.swing.table.DefaultTableModel;
 public class giangvienPanel extends javax.swing.JPanel {
 
     DefaultTableModel tableModel;
-    
+
     public giangvienPanel() {
         initComponents();
         refreshTable();
@@ -31,22 +31,20 @@ public class giangvienPanel extends javax.swing.JPanel {
         tableModel = (DefaultTableModel) table.getModel();
         ArrayList<GiangVien> list = GiangVienDAO.list();
         tableModel.setRowCount(0);
-        for(GiangVien g: list) {
+        for (GiangVien g : list) {
             tableModel.addRow(new Object[]{
-                g.getId(), 
-                g.getName(), 
-                g.getBirthOfDate(), 
+                g.getId(),
+                g.getName(),
+                g.getBirthOfDate(),
                 g.getSex(), g.getPhone(),
-                g.getAddress(), 
+                g.getAddress(),
                 g.getEmail()});
         }
-        
+
         table.setRowSelectionInterval(0, 0);
-        
+
     }
-    
-    
-    
+
     public void showMessage(String mess) {
         JOptionPane.showMessageDialog(null, mess);
     }
@@ -62,7 +60,7 @@ public class giangvienPanel extends javax.swing.JPanel {
             return 0;
         }
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -80,6 +78,7 @@ public class giangvienPanel extends javax.swing.JPanel {
         addButton = new javax.swing.JButton();
         deleteButton = new javax.swing.JButton();
         updateButton = new javax.swing.JButton();
+        giangvienchitietBtn = new javax.swing.JButton();
         editButton = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
@@ -139,6 +138,13 @@ public class giangvienPanel extends javax.swing.JPanel {
             }
         });
 
+        giangvienchitietBtn.setText("Chi tiết giảng viên");
+        giangvienchitietBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                giangvienchitietBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -146,16 +152,22 @@ public class giangvienPanel extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(addButton)
                     .addComponent(deleteButton)
-                    .addComponent(updateButton))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(addButton)
+                            .addComponent(updateButton))
+                        .addGap(18, 18, 18)
+                        .addComponent(giangvienchitietBtn)))
+                .addContainerGap(425, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap(14, Short.MAX_VALUE)
-                .addComponent(addButton)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addButton)
+                    .addComponent(giangvienchitietBtn))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(updateButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -284,7 +296,7 @@ public class giangvienPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
-       try {
+        try {
             GiangVien item = new GiangVien();
             item.setName(ten_giang_vien_input.getText());
             item.setBirthOfDate(DateHelp.convertDate(ngay_sinh_input.getText()));
@@ -329,7 +341,7 @@ public class giangvienPanel extends javax.swing.JPanel {
             item.setPhone(so_dien_thoai_input.getText());
             item.setAddress(dia_chi_input.getText());
             item.setEmail(email_input.getText());
-            
+
             GiangVienDAO.update(item);
         } catch (Exception e) {
             showMessage("Cập nhật dữ liệu không thành công!\nVui lòng kiểm lại thông tin bạn nhập và chọn");
@@ -341,7 +353,7 @@ public class giangvienPanel extends javax.swing.JPanel {
         int index = table.getSelectedRow();
         Integer id = Integer.parseInt(tableModel.getValueAt(index, 0).toString());
         GiangVien item = GiangVienDAO.find(id);
-        
+
         ma_giang_vien_input.setText(Integer.toString(item.getId()));
         ten_giang_vien_input.setText(item.getName());
         ngay_sinh_input.setText(item.getBirthOfDate().toString());
@@ -349,13 +361,20 @@ public class giangvienPanel extends javax.swing.JPanel {
         so_dien_thoai_input.setText(item.getPhone());
         dia_chi_input.setText(item.getPhone());
         email_input.setText(item.getEmail());
-        
-        
+
+
     }//GEN-LAST:event_editButtonActionPerformed
 
     private void sexComboboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sexComboboxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_sexComboboxActionPerformed
+
+    private void giangvienchitietBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_giangvienchitietBtnActionPerformed
+        int index = table.getSelectedRow();
+        Integer id = Integer.parseInt(tableModel.getValueAt(index, 0).toString());
+        GiangVien item = GiangVienDAO.find(id);
+        new GiangvienJFrameView(item).setVisible(true);
+    }//GEN-LAST:event_giangvienchitietBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -364,6 +383,7 @@ public class giangvienPanel extends javax.swing.JPanel {
     private javax.swing.JTextField dia_chi_input;
     private javax.swing.JButton editButton;
     private javax.swing.JTextField email_input;
+    private javax.swing.JButton giangvienchitietBtn;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

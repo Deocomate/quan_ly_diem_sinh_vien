@@ -104,6 +104,7 @@ public class nganhPanel extends javax.swing.JPanel {
         addButton = new javax.swing.JButton();
         updateButton = new javax.swing.JButton();
         deleteButton = new javax.swing.JButton();
+        chi_tiet_nganh_hoc_btn = new javax.swing.JButton();
         editButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
@@ -150,6 +151,13 @@ public class nganhPanel extends javax.swing.JPanel {
             }
         });
 
+        chi_tiet_nganh_hoc_btn.setText("Chi tiết ngành học");
+        chi_tiet_nganh_hoc_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chi_tiet_nganh_hoc_btnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -157,7 +165,10 @@ public class nganhPanel extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(addButton)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(addButton)
+                        .addGap(18, 18, 18)
+                        .addComponent(chi_tiet_nganh_hoc_btn))
                     .addComponent(updateButton)
                     .addComponent(deleteButton))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -166,7 +177,9 @@ public class nganhPanel extends javax.swing.JPanel {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(addButton)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addButton)
+                    .addComponent(chi_tiet_nganh_hoc_btn))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(updateButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -359,9 +372,17 @@ public class nganhPanel extends javax.swing.JPanel {
         refreshTable();
     }//GEN-LAST:event_deleteButtonActionPerformed
 
+    private void chi_tiet_nganh_hoc_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chi_tiet_nganh_hoc_btnActionPerformed
+        int row = table.getSelectedRow();
+        int id = Integer.parseInt(tableModel.getValueAt(row, 0).toString());
+        Nganh item = NganhDAO.find(id);
+        new NganhJFrameView(item).setVisible(true);
+    }//GEN-LAST:event_chi_tiet_nganh_hoc_btnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;
+    private javax.swing.JButton chi_tiet_nganh_hoc_btn;
     private javax.swing.JButton deleteButton;
     private javax.swing.JButton editButton;
     private javax.swing.JComboBox<String> hedaotaoCombobox;
