@@ -60,6 +60,9 @@ public class NganhJFrameView extends javax.swing.JFrame {
                 item.getTenHocPhan()
             });
         }
+        if (list.size() == 0) {
+            return;
+        }
         table.setRowSelectionInterval(0, 0);
     }
 

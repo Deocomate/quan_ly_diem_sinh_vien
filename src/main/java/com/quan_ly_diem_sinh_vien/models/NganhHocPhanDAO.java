@@ -3,6 +3,7 @@ package com.quan_ly_diem_sinh_vien.models;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class NganhHocPhanDAO extends DAO {
@@ -128,6 +129,17 @@ public class NganhHocPhanDAO extends DAO {
         return listHocPhan;
     }
 
+    public static ArrayList<NganhHocPhan> findListNganhHocPhanVoiNganh(int NganhId) {
+        ArrayList<NganhHocPhan> listNganhHocPhan = new ArrayList<>();
+        ArrayList<NganhHocPhan> nganhHocPhanList = list();
+        for (NganhHocPhan i : nganhHocPhanList) {
+            if (i.getNganhId() == NganhId) {
+                listNganhHocPhan.add(i);
+            }
+        }
+        return listNganhHocPhan;
+    }
+
     public static int deleteNganhTrongHocPhan(int NganhId, int HocphanId) {
         int rows = 0;
         Connection con = connect();
@@ -147,4 +159,31 @@ public class NganhHocPhanDAO extends DAO {
         return rows;
     }
 
+    public static NganhHocPhan findNganhHocPhan(int nganh_id, int hocphan_id) {
+        NganhHocPhan item = new NganhHocPhan();
+        Connection con = connect();
+        try {
+            String sql = "SELECT * FROM `tbl_nganh_hocphan` WHERE `nganh_id` = ? AND `hocphan_id` = ?";
+            // Prepare: chuẩn bị 1 câu lệnh
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, nganh_id);
+            ps.setInt(2, hocphan_id);
+            // Execute: thực thi câu lệnh vừa xong
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                int nganhId = rs.getInt("nganh_id");
+                int hocPhanId = rs.getInt("hocphan_id");
+
+                item.setId(id);
+                item.setNganhId(nganhId);
+                item.setHocPhanId(hocPhanId);
+            }
+            // Hủy kết nốt đến database để đỡ tốn tài nguyên
+            con.close();
+        } catch (SQLException ex) {
+            System.out.println("Error!!!" + ex.toString());
+        }
+        return item;
+    }
 }

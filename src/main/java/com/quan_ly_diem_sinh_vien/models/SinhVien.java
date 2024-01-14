@@ -12,6 +12,14 @@ import java.sql.Date;
  */
 public class SinhVien {
 
+    @Override
+    public String toString() {
+        int id = getId();
+        String ten = getName();
+        String _class = LopBienCheDAO.find(getLopbiencheId()).getTenLop();
+        return id + " - " + ten + " - " + _class;
+    }
+
     int Id;
     String Name;
     Date BirthOfDate;
@@ -19,6 +27,7 @@ public class SinhVien {
     String Phone;
     String Address;
     String Email;
+    String Status;
     float Gpa;
     int LopbiencheId;
     int NganhId;
@@ -28,7 +37,7 @@ public class SinhVien {
     }
 
     ;
-    public SinhVien(int Id, String Name, Date BirthOfDate, String Sex, String Phone, String Address, String Email, float Gpa, int LopbiencheId, int NganhId) {
+    public SinhVien(int Id, String Name, Date BirthOfDate, String Sex, String Phone, String Address, String Email, float Gpa, int LopbiencheId, int NganhId, String Status) {
         this.Id = Id;
         this.Name = Name;
         this.BirthOfDate = BirthOfDate;
@@ -39,6 +48,7 @@ public class SinhVien {
         this.Gpa = Gpa;
         this.LopbiencheId = LopbiencheId;
         this.NganhId = NganhId;
+        this.Status = Status;
     }
 
     public int getId() {
@@ -120,6 +130,13 @@ public class SinhVien {
     public void setNganhId(int NganhId) {
         this.NganhId = NganhId;
     }
-    
+
+    public String getStatus() {
+        return Status;
+    }
+
+    public void setStatus(String Status) {
+        this.Status = Status;
+    }
 
 }

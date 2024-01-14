@@ -145,4 +145,23 @@ public class KhoaGiangVienDAO extends DAO {
         }
         return returnList;
     }
+
+    public static int deleteKhoaCuaGiangVien(int KhoaId, int GiangvienId) {
+        int rows = 0;
+        Connection con = connect();
+        try {
+            String sql = "DELETE FROM `tbl_khoa_giangvien` WHERE `khoa_id` = ? AND `giangvien_id` = ?";
+            // Prepare: chuẩn bị 1 câu lệnh
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, KhoaId);
+            ps.setInt(2, GiangvienId);
+            // Execute: thực thi câu lệnh vừa xong
+            rows = ps.executeUpdate();
+            // Hủy kết nốt đến database để đỡ tốn tài nguyên
+            con.close();
+        } catch (SQLException ex) {
+            System.out.println("Error!!!" + ex.toString());
+        }
+        return rows;
+    }
 }

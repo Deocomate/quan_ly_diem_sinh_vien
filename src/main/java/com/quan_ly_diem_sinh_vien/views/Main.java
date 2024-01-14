@@ -1,9 +1,7 @@
-
 package com.quan_ly_diem_sinh_vien.views;
 
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
-
 
 public class Main extends javax.swing.JFrame {
 
@@ -12,8 +10,10 @@ public class Main extends javax.swing.JFrame {
      */
     public Main() {
         initComponents();
+        
+        setView(new sinhvienPanel());
     }
-
+    
     public void setView(JPanel panelSet) {
         mainPanel.removeAll();
         mainPanel.setLayout(new BorderLayout());
@@ -33,8 +33,6 @@ public class Main extends javax.swing.JFrame {
 
         mainPanel = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
         hedaotaoMenu = new javax.swing.JMenu();
         hedaotaoMI = new javax.swing.JMenuItem();
         khoaMenu = new javax.swing.JMenuItem();
@@ -56,19 +54,12 @@ public class Main extends javax.swing.JFrame {
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 651, Short.MAX_VALUE)
+            .addGap(0, 1069, Short.MAX_VALUE)
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 661, Short.MAX_VALUE)
         );
-
-        jMenu1.setText("Trang chủ");
-
-        jMenuItem1.setText("Trang chủ");
-        jMenu1.add(jMenuItem1);
-
-        jMenuBar1.add(jMenu1);
 
         hedaotaoMenu.setText("Quản lý chung");
 
@@ -158,7 +149,7 @@ public class Main extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 651, Short.MAX_VALUE)
+                .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1069, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -239,7 +230,7 @@ public class Main extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Main().setVisible(true);
+                new Login().setVisible(true);
             }
         });
     }
@@ -250,10 +241,8 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JMenuItem hedaotaoMI;
     private javax.swing.JMenu hedaotaoMenu;
     private javax.swing.JMenuItem hocphanMenu;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem khoaMenu;
     private javax.swing.JMenuItem lopbiencheMenu;
     private javax.swing.JMenuItem lophocphanMenu;

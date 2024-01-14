@@ -9,6 +9,7 @@ import com.quan_ly_diem_sinh_vien.models.HocPhan;
 import com.quan_ly_diem_sinh_vien.models.HocPhanDAO;
 import com.quan_ly_diem_sinh_vien.models.Khoa;
 import com.quan_ly_diem_sinh_vien.models.KhoaDAO;
+import com.quan_ly_diem_sinh_vien.models.KhoaGiangVien;
 import com.quan_ly_diem_sinh_vien.models.KhoaGiangVienDAO;
 import com.quan_ly_diem_sinh_vien.models.Nganh;
 import com.quan_ly_diem_sinh_vien.models.NganhHocPhanDAO;
@@ -268,46 +269,46 @@ public class GiangvienJFrameView extends javax.swing.JFrame {
     }//GEN-LAST:event_giangvienidTextActionPerformed
 
     private void editBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editBtnActionPerformed
-//        int index = table.getSelectedRow();
-//        Integer id = Integer.parseInt(tableModel.getValueAt(index, 0).toString());
-//
-//        HocPhan item = HocPhanDAO.find(id);
-//        ma_khoa_text.setText(item.getId() + " - " + item.getTenHocPhan());
+        int index = table.getSelectedRow();
+        Integer id = Integer.parseInt(tableModel.getValueAt(index, 0).toString());
+
+        Khoa item = KhoaDAO.find(id);
+        ma_khoa_text.setText(item.getId() + " - " + item.getTenKhoa());
     }//GEN-LAST:event_editBtnActionPerformed
 
     private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
-//        int row = table.getSelectedRow();
-//        int id = Integer.parseInt(tableModel.getValueAt(row, 0).toString());
-//        if (showMessageConfirm("Bạn có chắc chắn muốn xóa không") == 1) {
-//            int rs = NganhHocPhanDAO.deleteNganhTrongHocPhan(nganhHoc.getId(), id);
-//            if (rs == 0) {
-//                showMessage("Xóa không thành công! Vui lòng kiểm tra lại.");
-//            }
-//        }
-//        refreshTable();
+        int row = table.getSelectedRow();
+        int id = Integer.parseInt(tableModel.getValueAt(row, 0).toString());
+        if (showMessageConfirm("Bạn có chắc chắn muốn xóa không") == 1) {
+            int rs = KhoaGiangVienDAO.deleteKhoaCuaGiangVien(id, gv.getId());
+            if (rs == 0) {
+                showMessage("Xóa không thành công! Vui lòng kiểm tra lại.");
+            }
+        }
+        refreshTable();
     }//GEN-LAST:event_deleteBtnActionPerformed
 
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
-//        try {
-//            NganhHocPhan item = new NganhHocPhan();
-//            item.setNganhId(nganhHoc.getId());
-//
-//            HocPhan hocphan = (HocPhan) khoaCombobox.getModel().getSelectedItem();
-//            int hocphan_id = hocphan.getId();
-//            item.setHocPhanId(hocphan_id);
-//
-//            //Add
-//            int check = NganhHocPhanDAO.create(item);
-//            if (check <= 0) {
-//                showMessage("Thêm dữ liệu không thành công");
-//            } else {
-//                showMessage("Thêm dữ liệu thành công");
-//            }
-//        } catch (Exception e) {
-//            showMessage("Thêm dữ liệu không thành công!, vui lòng kiểm tra lại các trường thông tin của bạn");
-//        }
-//        //List lại table
-//        refreshTable();
+        try {
+            KhoaGiangVien item = new KhoaGiangVien();
+            item.setGiangvienId(gv.getId());
+
+            Khoa k = (Khoa) khoaCombobox.getModel().getSelectedItem();
+            int khoa_id = k.getId();
+            item.setKhoaId(khoa_id);
+
+            //Add
+            int check = KhoaGiangVienDAO.create(item);
+            if (check <= 0) {
+                showMessage("Thêm dữ liệu không thành công");
+            } else {
+                showMessage("Thêm dữ liệu thành công");
+            }
+        } catch (Exception e) {
+            showMessage("Thêm dữ liệu không thành công!, vui lòng kiểm tra lại các trường thông tin của bạn");
+        }
+        //List lại table
+        refreshTable();
     }//GEN-LAST:event_addActionPerformed
 
     /**

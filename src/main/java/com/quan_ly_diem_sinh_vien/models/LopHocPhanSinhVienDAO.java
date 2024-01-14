@@ -1,13 +1,14 @@
-
 package com.quan_ly_diem_sinh_vien.models;
 
+import static com.quan_ly_diem_sinh_vien.models.KhoaGiangVienDAO.list;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-public class LopHocPhanSinhVienDAO extends DAO{
-	public static ArrayList<LopHocPhanSinhVien> list() {
+public class LopHocPhanSinhVienDAO extends DAO {
+
+    public static ArrayList<LopHocPhanSinhVien> list() {
         ArrayList<LopHocPhanSinhVien> list = new ArrayList<>();
         Connection con = connect();
         try {
@@ -32,9 +33,9 @@ public class LopHocPhanSinhVienDAO extends DAO{
         }
         return list;
     }
-	
-	public static LopHocPhanSinhVien find(int _id) {
-		LopHocPhanSinhVien item = new LopHocPhanSinhVien();
+
+    public static LopHocPhanSinhVien find(int _id) {
+        LopHocPhanSinhVien item = new LopHocPhanSinhVien();
         Connection con = connect();
         try {
             String sql = "select * from tbl_lophocphan_sinhvien where id = ?";
@@ -59,16 +60,16 @@ public class LopHocPhanSinhVienDAO extends DAO{
         }
         return item;
     }
-	
-	public static int create(LopHocPhanSinhVien item) {
+
+    public static int create(LopHocPhanSinhVien item) {
         int rows = 0;
         Connection con = connect();
         try {
             String sql = "INSERT INTO `tbl_lophocphan_sinhvien`(`lophocphan_id`, `sinhvien_id`) values(?, ?)";
             // Prepare: chuẩn bị 1 câu lệnh
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1 , item.getLopHocPhanId());
-            ps.setInt(2 , item.getSinhVienId());
+            ps.setInt(1, item.getLopHocPhanId());
+            ps.setInt(2, item.getSinhVienId());
             // Execute: thực thi câu lệnh vừa xong
             rows = ps.executeUpdate();
             // Hủy kết nốt đến database để đỡ tốn tài nguyên
@@ -78,16 +79,16 @@ public class LopHocPhanSinhVienDAO extends DAO{
         }
         return rows;
     }
-	
-	public static int update(LopHocPhanSinhVien item) {
+
+    public static int update(LopHocPhanSinhVien item) {
         int rows = 0;
         Connection con = connect();
         try {
             String sql = "UPDATE `tbl_lophocphan_sinhvien` SET `lophocphan_id`= ?,`sinhvien_id`= ? WHERE `id` = ?";
             // Prepare: chuẩn bị 1 câu lệnh
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1 , item.getLopHocPhanId());
-            ps.setInt(2 , item.getSinhVienId());
+            ps.setInt(1, item.getLopHocPhanId());
+            ps.setInt(2, item.getSinhVienId());
             ps.setInt(3, item.getId());
             // Execute: thực thi câu lệnh vừa xong
             rows = ps.executeUpdate();
@@ -98,8 +99,8 @@ public class LopHocPhanSinhVienDAO extends DAO{
         }
         return rows;
     }
-	
-	public static int delete(int id) {
+
+    public static int delete(int id) {
         int rows = 0;
         Connection con = connect();
         try {
@@ -107,6 +108,36 @@ public class LopHocPhanSinhVienDAO extends DAO{
             // Prepare: chuẩn bị 1 câu lệnh
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, id);
+            // Execute: thực thi câu lệnh vừa xong
+            rows = ps.executeUpdate();
+            // Hủy kết nốt đến database để đỡ tốn tài nguyên
+            con.close();
+        } catch (Exception ex) {
+            System.out.println("Error!!!" + ex.toString());
+        }
+        return rows;
+    }
+
+    public static ArrayList<SinhVien> findListSinhVienThuocLopHocPhan(int LopHocPhanId) {
+        ArrayList<SinhVien> returnList = new ArrayList<>();
+        ArrayList<LopHocPhanSinhVien> mainList = list();
+        for (LopHocPhanSinhVien i : mainList) {
+            if (i.getLopHocPhanId() == LopHocPhanId) {
+                returnList.add(SinhVienDAO.find(i.getSinhVienId()));
+            }
+        }
+        return returnList;
+    }
+
+    public static int deleteSinhVienThuocLopHocPhan(int LopHocPhanId, int SinhVienId) {
+        int rows = 0;
+        Connection con = connect();
+        try {
+            String sql = "DELETE FROM `tbl_lophocphan_sinhvien` WHERE `lophocphan_id` = ? AND `sinhvien_id` = ?";
+            // Prepare: chuẩn bị 1 câu lệnh
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, LopHocPhanId);
+            ps.setInt(2, SinhVienId);
             // Execute: thực thi câu lệnh vừa xong
             rows = ps.executeUpdate();
             // Hủy kết nốt đến database để đỡ tốn tài nguyên

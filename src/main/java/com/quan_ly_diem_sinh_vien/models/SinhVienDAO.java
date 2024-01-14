@@ -34,11 +34,12 @@ public class SinhVienDAO extends DAO {
                 String Phone = rs.getString("phone");
                 String Address = rs.getString("address");
                 String Email = rs.getString("email");
+                String Status = rs.getString("status");
                 float Gpa = rs.getFloat("gpa");
                 int LopbiencheId = rs.getInt("lopbienche_id");
                 int NganhId = rs.getInt("nganh_id");
                 // Khởi tạo đối tượng, thêm vào list
-                SinhVien item = new SinhVien(Id, Name, BirthOfDate, Sex, Phone, Address, Email, Gpa, LopbiencheId, NganhId);
+                SinhVien item = new SinhVien(Id, Name, BirthOfDate, Sex, Phone, Address, Email, Gpa, LopbiencheId, NganhId, Status);
                 list.add(item);
             }
             // Hủy kết nốt đến database để đỡ tốn tài nguyên
@@ -70,6 +71,7 @@ public class SinhVienDAO extends DAO {
                 float Gpa = rs.getFloat("gpa");
                 int LopbiencheId = rs.getInt("lopbienche_id");
                 int NganhId = rs.getInt("nganh_id");
+                String Status = rs.getString("status");
 
                 item.setId(Id);
                 item.setName(Name);
@@ -81,6 +83,7 @@ public class SinhVienDAO extends DAO {
                 item.setGpa(Gpa);
                 item.setLopbiencheId(LopbiencheId);
                 item.setNganhId(NganhId);
+                item.setStatus(Status);
             }
             // Hủy kết nốt đến database để đỡ tốn tài nguyên
             con.close();
@@ -94,7 +97,7 @@ public class SinhVienDAO extends DAO {
         int rows = 0;
         Connection con = connect();
         try {
-            String sql = "INSERT INTO `tbl_sinhvien`(`Name`, `birth_of_date`, `sex`, `phone`, `address`, `email`, `gpa`, `lopbienche_id`, `nganh_id`) values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO `tbl_sinhvien`(`Name`, `birth_of_date`, `sex`, `phone`, `address`, `email`, `gpa`, `lopbienche_id`, `nganh_id`,`status`) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             // Prepare: chuẩn bị 1 câu lệnh
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, item.getName());
@@ -106,6 +109,7 @@ public class SinhVienDAO extends DAO {
             ps.setFloat(7, item.getGpa());
             ps.setInt(8, item.getLopbiencheId());
             ps.setInt(9, item.getNganhId());
+            ps.setString(10, item.getStatus());
             // Execute: thực thi câu lệnh vừa xong
             rows = ps.executeUpdate();
             // Hủy kết nốt đến database để đỡ tốn tài nguyên
@@ -120,7 +124,7 @@ public class SinhVienDAO extends DAO {
         int rows = 0;
         Connection con = connect();
         try {
-            String sql = "UPDATE `tbl_sinhvien` SET `name`=?,`birth_of_date`=?,`sex`=?,`phone`=?,`address`=?,`email`=?,`gpa`=?,`lopbienche_id`=?,`nganh_id`=? WHERE `id` = ?";
+            String sql = "UPDATE `tbl_sinhvien` SET `name`=?,`birth_of_date`=?,`sex`=?,`phone`=?,`address`=?,`email`=?,`gpa`=?,`lopbienche_id`=?,`nganh_id`=?,`status`=? WHERE `id` = ?";
             // Prepare: chuẩn bị 1 câu lệnh
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, item.getName());
@@ -132,7 +136,8 @@ public class SinhVienDAO extends DAO {
             ps.setFloat(7, item.getGpa());
             ps.setInt(8, item.getLopbiencheId());
             ps.setInt(9, item.getNganhId());
-            ps.setInt(10, item.getId());
+            ps.setString(10, item.getStatus());
+            ps.setInt(11, item.getId());
             // Execute: thực thi câu lệnh vừa xong
             rows = ps.executeUpdate();
             // Hủy kết nốt đến database để đỡ tốn tài nguyên
