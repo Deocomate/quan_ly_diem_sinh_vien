@@ -43,7 +43,6 @@ public class Main extends javax.swing.JFrame {
         sinhvienMenu = new javax.swing.JMenuItem();
         lopbiencheMenu = new javax.swing.JMenuItem();
         lophocphanMenu = new javax.swing.JMenuItem();
-        bangdiemMenu = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Quản ký điểm sinh viên");
@@ -131,14 +130,6 @@ public class Main extends javax.swing.JFrame {
         });
         jMenu3.add(lophocphanMenu);
 
-        bangdiemMenu.setText("Quản lý bảng điểm sinh viên");
-        bangdiemMenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bangdiemMenuActionPerformed(evt);
-            }
-        });
-        jMenu3.add(bangdiemMenu);
-
         jMenuBar1.add(jMenu3);
 
         setJMenuBar(jMenuBar1);
@@ -196,10 +187,6 @@ public class Main extends javax.swing.JFrame {
         setView(new lophocphanPanel());
     }//GEN-LAST:event_lophocphanMenuActionPerformed
 
-    private void bangdiemMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bangdiemMenuActionPerformed
-        setView(new bangdiemPanel());
-    }//GEN-LAST:event_bangdiemMenuActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -236,7 +223,6 @@ public class Main extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem bangdiemMenu;
     private javax.swing.JMenuItem giangvienMenu;
     private javax.swing.JMenuItem hedaotaoMI;
     private javax.swing.JMenu hedaotaoMenu;
