@@ -75,7 +75,6 @@ public class khoaPanel extends javax.swing.JPanel {
         addButton = new javax.swing.JButton();
         updateButton = new javax.swing.JButton();
         deleteButton = new javax.swing.JButton();
-        quan_ly_chuyen_sau_btn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
         editButton = new javax.swing.JButton();
@@ -115,13 +114,6 @@ public class khoaPanel extends javax.swing.JPanel {
             }
         });
 
-        quan_ly_chuyen_sau_btn.setText("Quản lý chuyên sâu");
-        quan_ly_chuyen_sau_btn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                quan_ly_chuyen_sau_btnActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -129,21 +121,16 @@ public class khoaPanel extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(addButton)
-                        .addGap(18, 18, 18)
-                        .addComponent(quan_ly_chuyen_sau_btn))
+                    .addComponent(addButton)
                     .addComponent(updateButton)
                     .addComponent(deleteButton))
-                .addContainerGap(246, Short.MAX_VALUE))
+                .addContainerGap(394, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(addButton)
-                    .addComponent(quan_ly_chuyen_sau_btn))
+                .addGap(14, 14, 14)
+                .addComponent(addButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(updateButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -220,7 +207,7 @@ public class khoaPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(editButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -297,13 +284,6 @@ public class khoaPanel extends javax.swing.JPanel {
         ngay_thanh_lap_input.setText(item.getNgayThanhLap().toString() + " ");
     }//GEN-LAST:event_editButtonActionPerformed
 
-    private void quan_ly_chuyen_sau_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quan_ly_chuyen_sau_btnActionPerformed
-        int index = table.getSelectedRow();
-        Integer id = Integer.parseInt(tableModel.getValueAt(index, 0).toString());
-        Khoa item = KhoaDAO.find(id);
-        
-    }//GEN-LAST:event_quan_ly_chuyen_sau_btnActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;
@@ -317,7 +297,6 @@ public class khoaPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField ma_khoa_input;
     private javax.swing.JTextField ngay_thanh_lap_input;
-    private javax.swing.JButton quan_ly_chuyen_sau_btn;
     private javax.swing.JTable table;
     private javax.swing.JTextField ten_khoa_input;
     private javax.swing.JButton updateButton;

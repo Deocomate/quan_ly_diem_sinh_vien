@@ -279,6 +279,11 @@ public class sinhvienPanel extends javax.swing.JPanel {
         jLabel11.setText("Tình trạng học");
 
         statusCombobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Đang học", "Bảo lưu", "Thôi học" }));
+        statusCombobox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                statusComboboxActionPerformed(evt);
+            }
+        });
 
         lopBienCheCombobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -372,7 +377,7 @@ public class sinhvienPanel extends javax.swing.JPanel {
                     .addComponent(gpa_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11)
                     .addComponent(statusCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(11, 11, 11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nganhCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10))
@@ -450,6 +455,7 @@ public class sinhvienPanel extends javax.swing.JPanel {
         int row = table.getSelectedRow();
         int id = Integer.parseInt(tableModel.getValueAt(row, 0).toString());
         if (showMessageConfirm("Bạn có chắc chắn muốn xóa không") == 1) {
+            BangDiemDAO.delete(id);
             int rs = SinhVienDAO.delete(id);
             if (rs == 0) {
                 showMessage("Xóa không thành công! Vui lòng kiểm tra lại.");
@@ -577,6 +583,10 @@ public class sinhvienPanel extends javax.swing.JPanel {
         }
         refreshTable();
     }//GEN-LAST:event_gpaButtonActionPerformed
+
+    private void statusComboboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statusComboboxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_statusComboboxActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

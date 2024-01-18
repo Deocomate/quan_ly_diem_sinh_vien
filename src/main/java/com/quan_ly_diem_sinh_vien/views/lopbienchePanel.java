@@ -52,7 +52,7 @@ public class lopbienchePanel extends javax.swing.JPanel {
         }
         table.setRowSelectionInterval(0, 0);
 
-        // Set cho combobox hiển thị tên của hệ đào tạo
+        // 
         DefaultComboBoxModel nganhCbbModel = (DefaultComboBoxModel) nganhCombobox.getModel();
         nganhCbbModel.removeAllElements();
         List<Nganh> listNganh = NganhDAO.list();
@@ -62,7 +62,7 @@ public class lopbienchePanel extends javax.swing.JPanel {
         nganhCombobox.setModel(nganhCbbModel);
         // End
 
-        // Set cho combobox hiển thị tên của khoa
+        // 
         DefaultComboBoxModel giangvienCbbModel = (DefaultComboBoxModel) giangvienCombobox.getModel();
         giangvienCbbModel.removeAllElements();
         List<GiangVien> listGiangVien = GiangVienDAO.list();

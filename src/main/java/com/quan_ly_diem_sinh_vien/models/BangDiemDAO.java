@@ -127,4 +127,22 @@ public class BangDiemDAO {
         }
         return rows;
     }
+
+    public static int delete(int SinhVienId) {
+        int rows = 0;
+        Connection con = connect();
+        try {
+            String sql = "delete from tbl_bangdiem where sinhvien_id = ?";
+            // Prepare: chuẩn bị 1 câu lệnh
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, SinhVienId);
+            // Execute: thực thi câu lệnh vừa xong
+            rows = ps.executeUpdate();
+            // Hủy kết nốt đến database để đỡ tốn tài nguyên
+            con.close();
+        } catch (Exception ex) {
+            System.out.println("Error!!!" + ex.toString());
+        }
+        return rows;
+    }
 }
